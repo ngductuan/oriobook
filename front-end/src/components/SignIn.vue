@@ -47,14 +47,17 @@
             </button>
           </div>
 
-          <p class="text-center fw-bold mt-3 text-muted" style="width: 100%; font-size: 14px;">
+          <p
+            class="text-center fw-bold mt-3 text-muted"
+            style="width: 100%; font-size: 14px"
+          >
             OR
           </p>
 
           <a
             class="btn btn-danger rounded-0 text-light d-flex align-items-center justify-content-center fw-bold"
             style="width: 100%; height: 50px; font-size: 13px"
-            href="https://localhost:3000/auth/google"
+            :href="`https://oriobook-main-sys.onrender.com/auth/google`"
             role="button"
           >
             <img
@@ -104,7 +107,7 @@ export default {
       if (result) {
         console.log("OKE");
         const response = await axios.post(
-          `https://localhost:3000/account/signIn`,
+          `${process.env.MAIN_URL}/account/signIn`,
           formData
         );
         console.log("OKE");
@@ -123,12 +126,12 @@ export default {
             position: "top-center",
           });
         } else {
-          window.location.href = "https://localhost:8080/account-details";
+          window.location.href = "/account-details";
         }
       }
     }
 
-    return { SaveData, formData, rules, v$ };
+    return { SaveData, formData, rules, v$,};
   },
 };
 </script>

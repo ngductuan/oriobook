@@ -76,7 +76,7 @@ export default {
       if (result) {
         try {
           const response = await axios.get(
-            `https://localhost:3000/account/getAccountDetail`
+            `${process.env.MAIN_URL}/account/getAccountDetail`
           );
           mail = response.data.email;
         } catch (error) {
@@ -85,15 +85,15 @@ export default {
         if (mail === formData.account_email) {
           try {
             const response1 = await axios.post(
-              `https://localhost:3000/account/delete`,
+              `${process.env.MAIN_URL}/account/delete`,
               formData
             );
 
             if (response1.data.status === true) {
               localStorage.removeItem("token");
               localStorage.removeItem("sidebar");
-              window.location.href = "https://localhost:8080/";
-            }else{
+              window.location.href = "/";
+            } else {
               console.log(`you cannot delete your account`);
             }
           } catch (error) {

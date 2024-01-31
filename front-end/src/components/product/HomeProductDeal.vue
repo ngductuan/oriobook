@@ -81,11 +81,11 @@ export default {
           console.log(id);
           const quantity = 1;
           const response = await axios.post(
-            `https://localhost:3000/account/addToCart/${id}/${quantity}`
+            `${process.env.MAIN_URL}/account/addToCart/${id}/${quantity}`
           );
           if (response.data.status == true) {
             const response1 = await axios.get(
-              `https://localhost:3000/account/getCart`
+              `${process.env.MAIN_URL}/account/getCart`
             );
             let newquantity = ref(0);
             for (let i = 0; i < response1.data.length; i++) {
@@ -98,7 +98,7 @@ export default {
           }
         } catch (error) {
           console.error("Lỗi khi gọi API", error);
-          window.location.href = "https://localhost:8080/login";
+          window.location.href = "/login";
         }
       } else {
         toast.error("Sold out!", {
